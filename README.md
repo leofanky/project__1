@@ -32,3 +32,5 @@ The system will supports reading:
 The system is split in a webapp and a client (for collecting the sensor data).
 
 Activities can be scheduled by an integrated scheduler.
+
+Project made by Leonardo Fanchini and Catalina Sagan.
