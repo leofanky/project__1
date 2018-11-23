@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>docs</name>
+	<name>HomeAutomationDocs</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -8,4 +8,11 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>mkdocs.yml</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/mkdocs.yml</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -1,27 +1,46 @@
 sudo: required
-dist: trusty
-
 language: java
-jdk: oraclejdk8
+jdk:
+  - oraclejdk8
+install:
+#- git clone https://github.com/beowulfe/HAP-Java.git
+#- cd HAP-Java
+#- mvn install
+- pwd
+- cd ..
+- rm -rf obera-base zwave
+- git clone https://github.com/oberasoftware/obera-base.git
+- cd obera-base && mvn -DskipTests install && cd ..
+- git clone https://github.com/comdata/zwave.git
+- cd zwave && mvn -DskipTests install && cd ..
+- git clone https://github.com/comdata/HomeAutomationZWave.git
+- cd HomeAutomationZWave && mvn -DskipTests install && cd ..
+- git clone https://github.com/comdata/HomeAutomationBase.git
+- cd HomeAutomationBase && mvn -DskipTests install && cd ..
+- pwd
+- cd HomeAutomation
+
+#sudo: false
 
 cache:
   directories:
   - $HOME/.m2
-  - $HOME/.p2
-  - extensions/ui/org.eclipse.smarthome.ui.paper/npm_cache
 
-before_install: echo "MAVEN_OPTS='-Xms1g -Xmx2g -XX:PermSize=512m -XX:MaxPermSize=1g'" > ~/.mavenrc
+addons:
+  mariadb: '10.0'
+  apt:
+    packages:
+      - oracle-java8-installer
+  sonarcloud:
+    organization: "homeautomation"
 
-#$ mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-#$ mvn test -B
-
-install:
-  - echo 'mvn clean verify -B -V -Dspotbugs.skip=true 1> .build.stdout 2> .build.stderr' > .build.sh
-  - chmod 0755 .build.sh
 script:
-  - travis_wait 60 ./.build.sh
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarQube analysis
+  - mvn install -DskipTests=true sonar:sonar org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+
+before_script:
+  - mysql -u root -e 'CREATE DATABASE HA;'
+  - mysql -u root HA < HomeAutomation/WebContent/WEB-INF/log4j.sql
 after_success:
-  - tail -n  200 .build.stdout
-after_failure:
-  - tail -n  300 .build.stderr
-  - tail -n 2000 .build.stdout
+  - bash <(curl -s https://codecov.io/bash)
+
