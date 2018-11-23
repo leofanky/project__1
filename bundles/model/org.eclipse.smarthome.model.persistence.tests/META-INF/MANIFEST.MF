@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: .
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse SmartHome Persistence Model Tests
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: org.eclipse.smarthome.model.persistence.tests
+Bundle-Vendor: Eclipse.org/SmartHome
+Bundle-Version: 0.10.0.qualifier
+Export-Package: 
+ org.eclipse.smarthome.model.persistence.extensions,
+ org.eclipse.smarthome.model.persistence.tests
+Fragment-Host: org.eclipse.smarthome.model.persistence
+Import-Package: 
+ org.eclipse.jdt.annotation;resolution:=optional,
+ org.eclipse.smarthome.core.items,
+ org.eclipse.smarthome.core.library.types,
+ org.eclipse.smarthome.core.persistence,
+ org.eclipse.smarthome.core.types,
+ org.eclipse.smarthome.model.persistence.extensions,
+ org.eclipse.smarthome.model.persistence.tests,
+ org.joda.time,
+ org.joda.time.base,
+ org.junit;version="4.0.0"
+Automatic-Module-Name: org.eclipse.smarthome.model.persistence.tests
