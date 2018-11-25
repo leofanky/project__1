@@ -2,7 +2,7 @@
 
 
 ..Eclipse SmartHome Build
-We are using the framework of Eclipse SmartHome to build our own solution on top, this means thta what we build is primarily an artifact repò of OSGi bundles that can be used within smart homes. We are also planon to use a tool called Disigner that can be used for editing config files with full IDE support
+We are using the framework of Eclipse SmartHome to build our own solution on top, this means thta what we build is primarily an artifact repÃ² of OSGi bundles that can be used within smart homes. We are also planing to use a tool called Disigner that can be used for editing config files with full IDE support
 
 1. Prerequisites
 The build infrastructure is based on Maven in order to make it as easy as possible. 
@@ -10,7 +10,7 @@ The build infrastructure is based on Maven in order to make it as easy as possib
 2. Settings with Maven
 To build Eclipse SmartHome from the sources, Maven takes care of everything:
     set MAVEN_OPTS to "-Xms512m -Xmx1024m"
-    change into the smarthome directory ("cd smarthome“)
+    change into the smarthome directory ("cd smarthomeâ€œ)
     run "mvn clean install" to compile and package all sources
 
 3.Basic idea
@@ -32,3 +32,5 @@ The system will supports reading:
 The system is split in a webapp and a client (for collecting the sensor data).
 
 Activities can be scheduled by an integrated scheduler.
+
+Project made by Leonardo Fanchini and Catalina Sagan.
